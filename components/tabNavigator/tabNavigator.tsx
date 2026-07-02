@@ -32,7 +32,7 @@ const TabNavigator = ({
 
   return (
     <View
-      style={tw`flex-row items-center justify-between bg-[#f5f5f3] px-4 py-2 border-t border-gray-200`}
+      style={tw`flex-row items-center justify-between bg-[#f5f5f3] px-4 pb-4 pt-2 border-t border-gray-200`}
     >
       {/* Tab buttons */}
       <View style={tw`flex-row gap-4 flex-1`}>
