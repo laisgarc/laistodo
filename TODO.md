@@ -8,6 +8,8 @@
 - [ ] Corrigir tab para Android
 - [ ] Corrigir altura IOS
 - [ ] Adicionar ícone
+- [ ] Trocar ícone fechar modal ao adicionar task
+
 
 ## Notas
 
