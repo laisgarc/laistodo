@@ -5,6 +5,7 @@ import { useDeviceContext } from "twrnc";
 import { HomeScreen } from "../screens/home";
 import { CalendarScreen } from "../screens/calendar";
 import { RoutineScreen } from "../screens/routine";
+import { AllScreen } from "../screens/all";
 import { TabNavigator } from "../components/tabNavigator";
 
 type ActiveTab = "today" | "calendar" | "routine" | "all";
@@ -31,8 +32,7 @@ const AppNavigator = () => {
       case "routine":
         return <RoutineScreen />;
       case "all":
-        // TODO: Implementar tela de todas as tarefas
-        return <View style={tw`flex-1 bg-white items-center justify-center`} />;
+        return <AllScreen />;
       default:
         return <HomeScreen />;
     }
