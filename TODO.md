@@ -6,8 +6,8 @@
 - [ ] Testar fluxos principais
 - [ ] Corrigir bugs encontrados
 - [ ] Corrigir tab para Android
+- [ ] Corrigir altura IOS
 - [ ] Adicionar ícone
-
 
 ## Notas
 

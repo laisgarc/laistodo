@@ -7,20 +7,25 @@ import { CalendarScreen } from "../screens/calendar";
 import { RoutineScreen } from "../screens/routine";
 import { AllScreen } from "../screens/all";
 import { TabNavigator } from "../components/tabNavigator";
+import AddTaskModal from "../components/addTaskModal/addTaskModal";
 
 type ActiveTab = "today" | "calendar" | "routine" | "all";
 
 const AppNavigator = () => {
   useDeviceContext(tw);
   const [activeTab, setActiveTab] = useState<ActiveTab>("today");
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
 
   const handleTabChange = (tab: ActiveTab) => {
     setActiveTab(tab);
   };
 
   const handleAddPress = () => {
-    // TODO: Implementar lógica para adicionar nova tarefa
-    console.log("Add button pressed");
+    setIsAddModalVisible(true);
+  };
+
+  const closeAddModal = () => {
+    setIsAddModalVisible(false);
   };
 
   const renderContent = () => {
@@ -41,6 +46,8 @@ const AppNavigator = () => {
   return (
     <View style={tw`flex-1 bg-white`}>
       <View style={tw`flex-1`}>{renderContent()}</View>
+      <AddTaskModal visible={isAddModalVisible} onClose={closeAddModal} />
+
       <TabNavigator
         activeTab={activeTab}
         onTabChange={handleTabChange}
