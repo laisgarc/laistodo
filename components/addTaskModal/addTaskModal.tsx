@@ -62,7 +62,7 @@ const priorityStyles: Record<
   Alta: {
     bg: "rgba(232, 120, 120, 0.133)",
     border: "rgba(232, 120, 120, 0.267)",
-    text: "#e87878",
+    text: "#f4a8b5",
   },
 };
 
@@ -246,10 +246,10 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
                       onPress={() => setSelectedPriority(priority)}
                       style={tw.style(
                         `rounded-3xl px-4 h-10 justify-center`,
-                         active
+                        active
                           ? {
-                              backgroundColor: priority.bg,
-                              borderColor: priority.activeBorder,
+                              backgroundColor: style.bg,
+                              borderColor: style.border,
                               borderWidth: 1,
                             }
                           : {
