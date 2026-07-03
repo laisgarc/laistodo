@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import tw from "../../lib/tailwind";
 import { useDeviceContext } from "twrnc";
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const recurrenceOptions = ["Sem recorrência", "Diário", "Semanal", "Mensal"];
 
@@ -49,9 +50,9 @@ const priorityStyles: Record<
   { bg: string; border: string; text: string }
 > = {
   Baixa: {
-    bg: "rgba(155,149,144,0.13)",
-    border: "rgba(155,149,144,0.27)",
-    text: "#9b9590",
+    bg: "rgba(130, 201, 160, 0.133)",
+    border: "rgba(130, 201, 160, 0.267)",
+    text: "#82c9a0",
   },
   Média: {
     bg: "rgba(242,201,122,0.13)",
@@ -59,9 +60,9 @@ const priorityStyles: Record<
     text: "#f2c97a",
   },
   Alta: {
-    bg: "rgba(155,149,144,0.13)",
-    border: "rgba(155,149,144,0.27)",
-    text: "#9b9590",
+    bg: "rgba(232, 120, 120, 0.133)",
+    border: "rgba(232, 120, 120, 0.267)",
+    text: "#e87878",
   },
 };
 
@@ -76,11 +77,23 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
   useDeviceContext(tw);
 
   const [taskName, setTaskName] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   const [selectedRecurrence, setSelectedRecurrence] = useState(
     recurrenceOptions[0],
   );
   const [selectedCategory, setSelectedCategory] = useState(categories[1].label);
   const [selectedPriority, setSelectedPriority] = useState(priorities[1]);
+
+  const onDateChange = (event: any, selectedDate: Date | undefined) => {
+    const currentDate = selectedDate || date;
+    setDate(currentDate);
+  };
+
+  const onTimeChange = (event: any, selectedTime: Date | undefined) => {
+    const currentTime = selectedTime || time;
+    setTime(currentTime);
+  };
 
   return (
     <Modal
@@ -114,7 +127,32 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
               placeholderTextColor="#b8b1aa"
               style={tw`bg-[#f8f7f5] rounded-3xl h-12 px-4 border border-[#ede7df] text-base text-[#2d2a27]`}
             />
-
+            <View style={tw`flex-row justify-start gap-3 mt-4`}>
+              <View style={tw`flex-col gap-1.5 items-start`}>
+                <Text style={tw`text-xs font-semibold text-[#9B9590]`}>
+                  Data
+                </Text>
+                <DateTimePicker
+                  value={date}
+                  mode="date"
+                  display="default"
+                  onChange={onDateChange}
+                  style={tw`ml-[-10px] text-[#2d2a27] !bg-[#f3f2f0]`}
+                />
+              </View>
+              <View style={tw`flex-col gap-1.5 items-start`}>
+                <Text style={tw`text-xs font-semibold text-[#9B9590]`}>
+                  Horário
+                </Text>
+                <DateTimePicker
+                  value={time}
+                  mode="time"
+                  display="default"
+                  onChange={onTimeChange}
+                  style={tw`ml-[-10px]`}
+                />
+              </View>
+            </View>
             <View style={tw`mt-5`}>
               <Text style={tw`text-xs font-semibold text-[#9b9590] mb-2`}>
                 Recorrência
@@ -208,15 +246,15 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
                       onPress={() => setSelectedPriority(priority)}
                       style={tw.style(
                         `rounded-3xl px-4 h-10 justify-center`,
-                        active
+                         active
                           ? {
-                              backgroundColor: "#ede9e3",
-                              borderColor: "rgba(45,42,39,0.08)",
+                              backgroundColor: priority.bg,
+                              borderColor: priority.activeBorder,
                               borderWidth: 1,
                             }
                           : {
-                              backgroundColor: style.bg,
-                              borderColor: style.border,
+                              backgroundColor: "#ede9e3",
+                              borderColor: "rgba(45,42,39,0.08)",
                               borderWidth: 1,
                             },
                       )}
