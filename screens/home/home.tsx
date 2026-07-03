@@ -1,4 +1,4 @@
-import { ScrollView, View, Text, Image, Pressable } from "react-native";
+import { ScrollView, View, Text, Pressable } from "react-native";
 import tw from "../../lib/tailwind";
 import { useDeviceContext } from "twrnc";
 import React, { useState } from "react";
@@ -38,8 +38,8 @@ const ProgressRing = ({
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            stroke="#e0e0e0"
-            strokeWidth="4"
+            stroke="#ede7df"
+            strokeWidth="5"
             fill="none"
           />
           {/* Progress circle */}
@@ -48,7 +48,7 @@ const ProgressRing = ({
             cy={size / 2}
             r={radius}
             stroke="#7b9ed9"
-            strokeWidth="4"
+            strokeWidth="5"
             fill="none"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
@@ -68,8 +68,8 @@ const ProgressRing = ({
       >
         <Text
           style={{
-            fontSize: 16,
-            fontWeight: "bold",
+            fontSize: 15,
+            fontWeight: "700",
             color: "#7b9ed9",
           }}
         >
@@ -170,7 +170,7 @@ const HomeScreen = () => {
 
       {/* Progress Card */}
       <View
-        style={tw`bg-white rounded-2xl p-4 mb-6 flex-row items-center border border-gray-200`}
+        style={tw`bg-white rounded-3xl p-5 mb-6 flex-row items-center border border-[#ede7df] shadow-sm`}
       >
         <View style={tw`mr-4`}>
           <ProgressRing completed={completedCount} total={tasks.length} />
@@ -181,7 +181,7 @@ const HomeScreen = () => {
           <Text style={tw`text-base font-semibold text-[#2d2a27]`}>
             {tasks.length - completedCount} pendentes
           </Text>
-          <Text style={tw`text-sm text-gray-400 mt-1`}>
+          <Text style={tw`text-sm text-[#9b9590] mt-1`}>
             {completionPercentage}% completo hoje
           </Text>
         </View>
@@ -193,23 +193,36 @@ const HomeScreen = () => {
           <Pressable
             key={task.id}
             onPress={() => toggleTask(task.id)}
-            style={tw`bg-white rounded-2xl p-4 mb-3 border border-gray-200`}
+            style={tw`bg-white rounded-3xl p-5 mb-3 border border-[#ede7df] shadow-sm`}
           >
             <View style={tw`flex-row items-start gap-3`}>
               {/* Left Border Indicator */}
               <View
-                style={tw.style(`w-1 h-8 rounded-full`, {
+                style={tw.style(`rounded-full`, {
+                  width: 4,
+                  height: 46,
                   backgroundColor: task.dotColor,
-                  opacity: task.completed ? 0.3 : 1,
+                  opacity: task.completed ? 0.35 : 1,
                 })}
               />
 
               {/* Icon */}
-              <View style={tw`mt-0.5`}>
+              <View
+                style={tw.style(
+                  `rounded-full border border-[#f1ece8] p-2 bg-white`,
+                  {
+                    shadowColor: "#000",
+                    shadowOpacity: 0.02,
+                    shadowRadius: 4,
+                    shadowOffset: { width: 0, height: 1 },
+                    elevation: 1,
+                  },
+                )}
+              >
                 {task.completed ? (
-                  <CheckCircle size={22} color={task.dotColor} />
+                  <CheckCircle size={18} color={task.dotColor} />
                 ) : (
-                  <Circle size={22} color={task.dotColor} />
+                  <Circle size={18} color={task.dotColor} />
                 )}
               </View>
 
@@ -217,7 +230,7 @@ const HomeScreen = () => {
               <View style={tw`flex-1`}>
                 <Text
                   style={tw.style(
-                    `text-sm font-medium`,
+                    `text-base font-semibold`,
                     task.completed
                       ? `line-through text-gray-400`
                       : `text-[#2d2a27]`,
@@ -251,7 +264,9 @@ const HomeScreen = () => {
 
               {/* Right Dot Indicator */}
               <View
-                style={tw.style(`w-2 h-2 rounded-full mt-1`, {
+                style={tw.style(`rounded-full mt-1`, {
+                  width: 10,
+                  height: 10,
                   backgroundColor: task.dotColor,
                 })}
               />
