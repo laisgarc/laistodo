@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MyFirstExpoApp",
-    "slug": "MyFirstExpoApp",
+    "name": "simpletasks",
+    "slug": "simpletasks",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.laisgarcsteam.simpletasks"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "913d8d97-3a9b-46f4-894d-5dbade4346e5"
+      }
+    },
+    "owner": "laisgarcs-team"
   }
 }

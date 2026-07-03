@@ -3,6 +3,7 @@ import { View } from "react-native";
 import tw from "../lib/tailwind";
 import { useDeviceContext } from "twrnc";
 import { HomeScreen } from "../screens/home";
+import { CalendarScreen } from "../screens/calendar";
 import { TabNavigator } from "../components/tabNavigator";
 
 type ActiveTab = "today" | "calendar" | "routine" | "all";
@@ -25,8 +26,7 @@ const AppNavigator = () => {
       case "today":
         return <HomeScreen />;
       case "calendar":
-        // TODO: Implementar tela de calendário
-        return <View style={tw`flex-1 bg-white items-center justify-center`} />;
+        return <CalendarScreen />;
       case "routine":
         // TODO: Implementar tela de rotina
         return <View style={tw`flex-1 bg-white items-center justify-center`} />;
