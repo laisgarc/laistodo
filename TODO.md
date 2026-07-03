@@ -1,6 +1,7 @@
 # Lista de To-dos do Projeto
 
 ## Tarefas principais
+
 - [ ] Definir funcionalidades do app
 - [ ] Configurar navegação e rotas
 - [ ] Implementar tela inicial
@@ -9,7 +10,9 @@
 - [ ] Configurar estilização com Tailwind
 - [ ] Testar fluxos principais
 - [ ] Corrigir bugs encontrados
-
+- [ ] Corrigir tab para Android
+- [ ] Adicionar ícone
 
 ## Notas
+
 - Use esta lista como base e adicione/desmembre tarefas conforme o app evolui.
