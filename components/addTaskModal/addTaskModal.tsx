@@ -262,7 +262,7 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
                       <Text
                         style={tw.style(
                           `text-sm font-semibold`,
-                          active ? { color: "#9b9590" } : { color: style.text },
+                          active ? { color: style.text } : { color: "#9b9590" },
                         )}
                       >
                         {priority}
