@@ -6,67 +6,19 @@ import {
   TextInput,
   Pressable,
   ScrollView,
-  Platform,
 } from "react-native";
 import tw from "../../lib/tailwind";
 import { useDeviceContext } from "twrnc";
 import DateTimePicker from "@react-native-community/datetimepicker";
-
-const recurrenceOptions = ["Sem recorrência", "Diário", "Semanal", "Mensal"];
-
-const categories = [
-  {
-    label: "Trabalho",
-    color: "#7b9ed9",
-    activeBg: "rgba(123,158,217,0.13)",
-    activeBorder: "rgba(123,158,217,0.27)",
-    activeText: "#7b9ed9",
-  },
-  {
-    label: "Pessoal",
-    color: "#82c9a0",
-    activeBg: "rgba(130,201,160,0.13)",
-    activeBorder: "rgba(130,201,160,0.27)",
-    activeText: "#82c9a0",
-  },
-  {
-    label: "Saúde",
-    color: "#f4a8b5",
-    activeBg: "rgba(244,168,181,0.13)",
-    activeBorder: "rgba(244,168,181,0.27)",
-    activeText: "#f4a8b5",
-  },
-  {
-    label: "Finanças",
-    color: "#c4a8d9",
-    activeBg: "rgba(196,168,217,0.13)",
-    activeBorder: "rgba(196,168,217,0.27)",
-    activeText: "#c4a8d9",
-  },
-];
-
-const priorityStyles: Record<
-  string,
-  { bg: string; border: string; text: string }
-> = {
-  Baixa: {
-    bg: "rgba(130, 201, 160, 0.133)",
-    border: "rgba(130, 201, 160, 0.267)",
-    text: "#82c9a0",
-  },
-  Média: {
-    bg: "rgba(242,201,122,0.13)",
-    border: "rgba(242,201,122,0.27)",
-    text: "#f2c97a",
-  },
-  Alta: {
-    bg: "rgba(232, 120, 120, 0.133)",
-    border: "rgba(232, 120, 120, 0.267)",
-    text: "#f4a8b5",
-  },
-};
-
-const priorities = ["Baixa", "Média", "Alta"];
+import Chip from "../ui/Chip";
+import PrimaryButton from "../ui/PrimaryButton";
+import {
+  categories,
+  priorityStyles,
+  priorities,
+  recurrenceOptions,
+  type PriorityOption,
+} from "./helper";
 
 interface AddTaskModalProps {
   visible: boolean;
@@ -83,7 +35,9 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
     recurrenceOptions[0],
   );
   const [selectedCategory, setSelectedCategory] = useState(categories[1].label);
-  const [selectedPriority, setSelectedPriority] = useState(priorities[1]);
+  const [selectedPriority, setSelectedPriority] = useState<PriorityOption>(
+    priorities[1],
+  );
 
   const onDateChange = (event: any, selectedDate: Date | undefined) => {
     const currentDate = selectedDate || date;
@@ -161,25 +115,12 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
                 {recurrenceOptions.map((option) => {
                   const active = option === selectedRecurrence;
                   return (
-                    <Pressable
+                    <Chip
                       key={option}
+                      label={option}
+                      active={active}
                       onPress={() => setSelectedRecurrence(option)}
-                      style={tw.style(
-                        `rounded-3xl px-4 h-10 justify-center`,
-                        active
-                          ? `bg-[#7b9ed9]`
-                          : `bg-[#f8f7f5] border border-[#ede7df]`,
-                      )}
-                    >
-                      <Text
-                        style={tw.style(
-                          `text-sm font-semibold`,
-                          active ? `text-white` : `text-[#2d2a27]`,
-                        )}
-                      >
-                        {option}
-                      </Text>
-                    </Pressable>
+                    />
                   );
                 })}
               </View>
@@ -273,14 +214,11 @@ const AddTaskModal = ({ visible, onClose }: AddTaskModalProps) => {
               </View>
             </View>
 
-            <Pressable
+            <PrimaryButton
+              label="Adicionar Tarefa"
               onPress={onClose}
-              style={tw`mt-6 bg-[#7b9ed9] rounded-3xl h-14 items-center justify-center`}
-            >
-              <Text style={tw`text-base font-semibold text-white`}>
-                Adicionar Tarefa
-              </Text>
-            </Pressable>
+              style={tw`mt-6`}
+            />
           </ScrollView>
         </View>
       </View>

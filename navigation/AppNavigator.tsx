@@ -6,8 +6,7 @@ import { HomeScreen } from "../screens/home";
 import { CalendarScreen } from "../screens/calendar";
 import { RoutineScreen } from "../screens/routine";
 import { AllScreen } from "../screens/all";
-import { TabNavigator } from "../components/tabNavigator";
-import AddTaskModal from "../components/addTaskModal/addTaskModal";
+import { AddTaskModal, TabNavigator } from "../components";
 
 type ActiveTab = "today" | "calendar" | "routine" | "all";
 
