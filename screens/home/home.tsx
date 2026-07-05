@@ -19,7 +19,7 @@ const HomeScreen = () => {
   const completionPercentage = getCompletionPercentage(tasks);
 
   const toggleTask = (id: number) => {
-    setTasks(toggleTaskCompleted(tasks, id));
+    setTasks((prev) => toggleTaskCompleted(prev, id));
   };
 
   return (

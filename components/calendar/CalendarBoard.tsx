@@ -122,7 +122,7 @@ const CalendarBoard = ({ markedDates, onDayPress }: CalendarBoardProps) => {
                 <View style={tw`flex-row gap-1 mt-1`}>
                   {marking.dots.map((dot: any, index: number) => (
                     <View
-                      key={index}
+                      key={dot?.key ?? index}
                       style={tw.style(`w-1.5 h-1.5 rounded-full`, {
                         backgroundColor: dot.color,
                       })}
