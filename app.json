@@ -32,6 +32,9 @@
         "projectId": "913d8d97-3a9b-46f4-894d-5dbade4346e5"
       }
     },
-    "owner": "laisgarcs-team"
+    "owner": "laisgarcs-team",
+    "plugins": [
+      "@react-native-community/datetimepicker"
+    ]
   }
 }

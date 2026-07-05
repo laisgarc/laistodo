@@ -2,16 +2,14 @@
 
 ## Tarefas principais
 
-- [ ] Definir funcionalidades do app
-- [ ] Configurar navegação e rotas
-- [ ] Implementar tela inicial
-- [ ] Implementar visualização do calendário
 - [ ] Criar componentes reutilizáveis
-- [ ] Configurar estilização com Tailwind
 - [ ] Testar fluxos principais
 - [ ] Corrigir bugs encontrados
 - [ ] Corrigir tab para Android
+- [ ] Corrigir altura IOS
 - [ ] Adicionar ícone
+- [ ] Trocar ícone fechar modal ao adicionar task
+
 
 ## Notas
 
